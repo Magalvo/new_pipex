@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 16:22:50 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 16:58:53 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:22:20 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void					child_free(t_pipex *pipex);
 void					ft_infile(t_pipex *pipex, char **argv, int argc);
 void					ft_outfile(t_pipex *pipex, char *argv);
 void					here_doc(char *dli, t_pipex *pipx, int pipe_nbr);
+int						ft_files(t_pipex *pipex, char **argv, int argc);
 
 //==================== Args ===========================//
 int						arg_check(char **argv, t_pipex *pipex);

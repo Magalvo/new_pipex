@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 15:44:03 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 12:27:29 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:12:09 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strcmp(const char *s1, const char *s2, size_t n);
+int		is_space(char c);
 
 #endif

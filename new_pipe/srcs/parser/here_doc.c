@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:26:23 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 16:59:29 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 18:47:49 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	here_doc(char *dli, t_pipex *pipx, int pipe_nbr)
 			write(1, "pipe ", 5);
 		write(1, "here_doc> ", 10);
 		line = get_next_line(0);
-		if (line == NULL || ft_strcmp(dli, line, ft_strlen(dli)) == 0)
+		if (line == NULL || ft_strncmp(line, dli, ft_strlen(line) - 1) == 0)
 			break ;
 		ft_putstr_fd(line, file);
 		free(line);

@@ -6,38 +6,11 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:36:21 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 10:25:49 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:11:24 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-/* char *ft_itoa(int nbr)
-{
-	char result[20];
-	int sig = nbr < 0;
-	long long n = nbr;
-	int i = 19;
-
-	result[19] = 0;
-	if (nbr < 0)
-		n *= -1;
-	if (n == 0)
-		result[--i] = '0';
-	while (n > 0)
-	{
-		result[--i] = n % 10 + '0';
-		n /= 10;
-	}
-	if (sig)
-		result[--i] = '-';
-	char *aloc = ft_calloc(((20 - i)));
-	int j = 0;
-	while (result[i])
-		aloc[j++] = result[i++];
-	aloc[j] = 0;
-	return aloc;
-} */
 
 static size_t	num_s(int num)
 {

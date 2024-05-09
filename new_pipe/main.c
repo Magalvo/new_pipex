@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:49:53 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 16:55:26 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:26:10 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,8 @@ int	main(int argc, char **argv, char **envp)
 	t_pipex	d;
 
 	if (argc < arg_check(argv, &d) || !content_check(argv))
-	{
-		ft_putstr_fd("Too few OR invalid arguments\n", STDERR_FILENO);
-		return (1);
-	}
-	ft_infile(&d, argv, argc);
-	ft_outfile(&d, argv[argc - 1]);
+		return (ft_putstr_fd("Too few OR invalid arguments\n", 2), 1);
+	ft_files(&d, argv, argc);
 	d.cmd_nbr = argc - 3 - d.here_doc;
 	d.pipe_nbr = 2 * (d.cmd_nbr - 1);
 	d.pipes = (int *)ft_calloc(sizeof(int), d.pipe_nbr);
