@@ -6,12 +6,12 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/02 15:44:03 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 11:44:05 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:27:29 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIB_H
-# define LIB_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 # include <stdio.h>
 # include <stdlib.h>

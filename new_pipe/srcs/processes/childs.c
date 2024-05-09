@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:31:00 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 10:41:37 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:23:20 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,20 @@
 static char	*cmd_path(char **paths, char *cmd)
 {
 	char	*command;
-	
+
 	if (!paths || !cmd)
 		return (NULL);
 	while (*paths)
 	{
 		if (ft_strcmp(*paths, cmd, ft_strlen(*paths)) == 0)
-			return (cmd);
+		{
+			if (access(cmd, X_OK | F_OK) == 0)
+				return (cmd);
+			else
+				return (NULL);
+		}
 		command = ft_strjoin(*paths, cmd);
-		if (access(command, 0) == 0)
+		if (access(command, X_OK | F_OK) == 0)
 			return (command);
 		free(command);
 		paths++;
@@ -31,7 +36,7 @@ static char	*cmd_path(char **paths, char *cmd)
 	return (NULL);
 }
 
-static	void ft_dup2(int zero, int first)
+static void	ft_dup2(int zero, int first)
 {
 	dup2(zero, 0);
 	dup2(first, 1);
@@ -55,8 +60,12 @@ void	child(t_pipex d, char **argv, char **envp)
 		{
 			pipe_msg(d.cmd_args[0]);
 			child_free(&d);
-			return ;
+			pipe_close(&d);
+			free_parent(&d);
+			exit(EXIT_FAILURE);
 		}
 		execve(d.cmd, d.cmd_args, envp);
-	} 
+		child_free(&d);
+		error_msg("execve");
+	}
 }

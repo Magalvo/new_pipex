@@ -1,6 +1,8 @@
 uno
 dos
 keyword
+keyword1
+keyword
 lambda
 sortakewword
 elmo
@@ -10,3 +12,5 @@ cryptic
 sorry 
 
 TEST: (./pipex input.txt "cat" "grep keyword" "sort" "uniq" output.txt)
+
+valgrind --leak-check=full -s ./pipex input.txt "/usr/bin/cat" "/usr/bin/grep keyword" "/usr/bin/sort" "/usr/bin/uniq" output.txt

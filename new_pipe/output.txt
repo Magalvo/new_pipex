@@ -1,2 +1,0 @@
-keyword
-TEST: (./pipex input.txt "cat" "grep keyword" "sort" "uniq" output.txt)

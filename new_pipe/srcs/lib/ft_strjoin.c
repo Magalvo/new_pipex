@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:22:49 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 10:29:35 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:22:28 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	total = ft_strlen(s1) + ft_strlen(s2);
-	join = (char *)ft_calloc(sizeof(char) , (total + 1));
+	join = (char *)ft_calloc(sizeof(char), (total + 1));
 	if (!join)
 		return (NULL);
 	ft_strcpy(join, s1);

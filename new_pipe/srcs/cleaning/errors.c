@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:03:13 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 10:43:35 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:28:04 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	pipe_msg(char *arg)
 	write(2, "\n", 1);
 }
 
-void	free_parent(t_pipex	*pipex)
+void	free_parent(t_pipex *pipex)
 {
 	int	ctd;
 
@@ -59,12 +59,12 @@ void	free_pipes(t_pipex *pipex)
 
 void	child_free(t_pipex *pipex)
 {
-	int i;
+	int	i;
 
-	i=0;
+	i = 0;
 	while (pipex->cmd_args[i] && pipex->cmd_args)
 	{
-		if(pipex->cmd_args[i])
+		if (pipex->cmd_args[i])
 			free(pipex->cmd_args[i]);
 		i++;
 	}
