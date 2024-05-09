@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:49:53 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 15:59:23 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 16:55:26 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	main(int argc, char **argv, char **envp)
 		ft_putstr_fd("Too few OR invalid arguments\n", STDERR_FILENO);
 		return (1);
 	}
-	ft_infile(&d, argv);
+	ft_infile(&d, argv, argc);
 	ft_outfile(&d, argv[argc - 1]);
 	d.cmd_nbr = argc - 3 - d.here_doc;
 	d.pipe_nbr = 2 * (d.cmd_nbr - 1);

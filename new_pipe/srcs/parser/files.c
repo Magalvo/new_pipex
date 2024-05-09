@@ -6,16 +6,19 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:57:53 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/09 12:51:04 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 17:00:31 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
 
-void	ft_infile(t_pipex *pipex, char **argv)
+void	ft_infile(t_pipex *pipex, char **argv, int argc)
 {
+	int	pipes;
+
+	pipes = argc - 5;
 	if (pipex->here_doc)
-		here_doc(argv[2], pipex);
+		here_doc(argv[2], pipex, pipes);
 	else
 	{
 		pipex->infile = open(argv[1], O_RDONLY);
