@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 12:26:23 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 13:03:40 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:22:36 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,19 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-void here_doc(char *delimiter, t_pipex *pipx) 
+void here_doc(char *dli, t_pipex *pipx) 
 {
     int     file;
-    char    *line = NULL;
+    char    *line;
 
     file = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0644);
-    if (file == -1) {
-        perror("open");
-        exit(EXIT_FAILURE); 
-    }
-
-    while (1) {
+    if (file == -1) 
+        error_msg("Error opening here_doc");
+    while (1) 
+    {
         write(1, "here_doc> ", 10);
         line = get_next_line(0);
-        if (line == NULL) {
-            perror("get_next_line");
-            exit(EXIT_FAILURE); 
-        }
-        if (ft_strcmp(delimiter, line, ft_strlen(delimiter)) == 0)
+        if(line == NULL || ft_strcmp(dli, line, ft_strlen(dli)) == 0)
             break;
         ft_putstr_fd(line, file);
         free(line);
@@ -42,9 +36,9 @@ void here_doc(char *delimiter, t_pipex *pipx)
     free(line);
     close(file);
     pipx->infile = open(".heredoc_tmp", O_RDONLY);
-    if (pipx->infile < 0) {
+    if (pipx->infile < 0) 
+    {
         unlink(".heredoc_tmp"); 
-        perror("open");
         exit(EXIT_FAILURE); 
 	}
 }

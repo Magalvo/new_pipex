@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 10:36:21 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/02/27 16:34:14 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:25:49 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@
 	}
 	if (sig)
 		result[--i] = '-';
-	char *aloc = malloc(((20 - i)));
+	char *aloc = ft_calloc(((20 - i)));
 	int j = 0;
 	while (result[i])
 		aloc[j++] = result[i++];

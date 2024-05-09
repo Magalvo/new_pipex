@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:03:13 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 22:45:25 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:43:35 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	error_msg(char *str)
 
 void	pipe_msg(char *arg)
 {
+	if (!arg)
+		arg = "{COMMAND}";
 	ft_putstr_fd("Error on:\t", 2);
 	ft_putstr_fd(arg, 2);
 	write(2, "\n", 1);
@@ -34,7 +36,7 @@ void	free_parent(t_pipex	*pipex)
 	close(pipex->outfile);
 	if (pipex->here_doc)
 		unlink(".heredoc_tmp");
-	while (pipex->cmd_paths[ctd])
+	while (pipex->cmd_paths[ctd] && pipex->cmd_paths)
 	{
 		free(pipex->cmd_paths[ctd]);
 		ctd++;
@@ -49,7 +51,8 @@ void	free_pipes(t_pipex *pipex)
 	close(pipex->outfile);
 	if (pipex->here_doc)
 		unlink(".heredoc_tmp");
-	free(pipex->pipes);
+	if (pipex->pipes)
+		free(pipex->pipes);
 	error_msg("Error on Envp");
 	exit(1);
 }
@@ -59,7 +62,7 @@ void	child_free(t_pipex *pipex)
 	int i;
 
 	i=0;
-	while (pipex->cmd_args[i])
+	while (pipex->cmd_args[i] && pipex->cmd_args)
 	{
 		if(pipex->cmd_args[i])
 			free(pipex->cmd_args[i]);

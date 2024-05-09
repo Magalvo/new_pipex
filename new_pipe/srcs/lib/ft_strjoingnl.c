@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:43:12 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 10:33:55 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:25:49 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strjoingnl(char *s1, char *s2)
 	int		i;
 	int		j;
 
-	new = (char *)malloc(ft_strlengnl(s1) + ft_strlengnl(s2) + 1);
+	new = (char *)ft_calloc(ft_strlengnl(s1) + ft_strlengnl(s2) + 1);
 	if (!new)
 	{
 		free(s1);

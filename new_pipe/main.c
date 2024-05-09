@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:49:53 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 22:35:12 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:42:02 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	pipe_close(t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	while (i < (pipex->pipe_nbr))
+	while (i < (pipex->pipe_nbr) && pipex->pipe_nbr)
 	{
 		close(pipex->pipes[i]);
 		i++;
@@ -51,7 +51,7 @@ int	main(int argc, char **argv, char **envp)
 	ft_outfile(&d, argv[argc-1]);
 	d.cmd_nbr = argc - 3 - d.here_doc;
 	d.pipe_nbr = (2 * (d.cmd_nbr - 1));
-	d.pipes = (int *)malloc(sizeof(int) * d.pipe_nbr);
+	d.pipes = (int *)ft_calloc(sizeof(int) , d.pipe_nbr);
 	if (!d.pipes)
 		error_msg("err creating pipes");
 	env_paths(&d, envp);

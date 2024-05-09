@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 14:57:53 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 13:07:53 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 11:40:59 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,11 @@ void	ft_outfile(t_pipex *pipex, char *argv)
 		pipex->outfile = open(argv, O_CREAT | O_RDWR | O_TRUNC, S_IRWXU);
 	if (pipex->outfile < 0)
 		error_msg("outfile err");
+}
+
+int	is_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n')
+		return (1);
+	return (0);
 }

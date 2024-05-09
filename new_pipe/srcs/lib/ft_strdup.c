@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 16:26:25 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/02/16 17:23:46 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:29:05 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strdup(char *str)
 	if (!str)
 		return (NULL);
 	len = ft_strlen(str);
-	new_str = malloc(sizeof(char) * (len + 1));
+	new_str = ft_calloc(sizeof(char) , (len + 1));
 	if (!new_str)
 		return (NULL);
 	i = 0;

@@ -6,31 +6,11 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 17:10:49 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 22:40:47 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 12:00:56 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/pipex.h"
-
-/* char	*args_parsing(char **argv, char **envp)
-{
-	char	**paths;
-	char	**args;
-	int		i;
-	
-	args = ft_split(argv[2], ' ');
-	
-	i = -1;
-	char *cmd;
-	while (paths[++i])
-	{
-		cmd = ft_strjoin(paths[i], args[0]);
-		if (execve(cmd, args, envp) == -1)
-			perror("execve fail: \n");
-		free(cmd);
-	}
-	exit(EXIT_FAILURE);
-} */
 
 void	free_paths(char **paths, int i)
 {
@@ -46,13 +26,6 @@ void	free_paths(char **paths, int i)
 		ctd++;
 	}
 	free(paths);
-}
-
-int	is_space(char c)
-{
-	if (c == ' ' || c == '\t' || c == '\n')
-		return (1);
-	return (0);
 }
 
 int	content_check(char **argv)
@@ -77,38 +50,45 @@ int	arg_check(char **argv, t_pipex *pipex)
 		return (pipex->here_doc = 0, 5);
 }
 
-char *env_paths(t_pipex *pipx, char **envp)
+int	add_slash(char *slash, char **paths)
 {
-    char **paths;
-    char *slash;
-    int i;
+	int i;
     int len;
 
-    len = 0;
+	len = 0;
     i = 0;
-    while (ft_strncmp(*envp, "PATH=", 5) != 0)
-        envp++;
-    paths = ft_split(*envp + 5, ':');
-    if (!paths)
-        return NULL;
-    while (paths[i])
+	while (paths[i])
     {
         len = ft_strlen(paths[i]);
         if (paths[i][len - 1] != '/')
         {
             slash = ft_strjoin(paths[i], "/");
             if (!slash)
-            {
-                free_paths(paths, i);
-                return NULL;
-            }
+               return(free_paths(paths, i), 0) ;
             free(paths[i]);
             paths[i] = slash;   
         }
         i++;
     }
+	return (1);
+}
+
+char *env_paths(t_pipex *pipx, char **envp)
+{
+    char **paths;
+    char *slash;
+
+	slash = NULL;
+    while (ft_strncmp(*envp, "PATH=", 5) != 0)
+        envp++;
+    paths = ft_split(*envp + 5, ':');
+    if (!paths)
+	{
+		return (NULL);
+	}  
+	add_slash(slash, paths);
     pipx->cmd_paths = paths;
-    return NULL;
+    return (NULL);
 }
 
 

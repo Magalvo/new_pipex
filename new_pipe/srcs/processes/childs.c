@@ -6,7 +6,7 @@
 /*   By: dde-maga <dde-maga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 11:31:00 by dde-maga          #+#    #+#             */
-/*   Updated: 2024/05/08 22:45:02 by dde-maga         ###   ########.fr       */
+/*   Updated: 2024/05/09 10:41:37 by dde-maga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	child(t_pipex d, char **argv, char **envp)
 		{
 			pipe_msg(d.cmd_args[0]);
 			child_free(&d);
-			exit(EXIT_FAILURE);
+			return ;
 		}
 		execve(d.cmd, d.cmd_args, envp);
 	} 
